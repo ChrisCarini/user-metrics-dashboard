@@ -13,10 +13,17 @@ import {
   addRepositoriesToResult,
 } from './fetchers';
 import { CustomOctokit, checkRateLimit, personalOctokit } from './lib/octokit';
+import { addConfigToResult } from './fetchers/config';
 
 export interface Result {
   meta: {
     createdAt: string;
+  };
+  config: {
+    organization: string;
+    includeForks?: boolean;
+    includeArchived?: boolean;
+    since?: string; // Used for limiting the date range of items to fetch
   };
   orgInfo: {
     login: string;
@@ -125,6 +132,7 @@ const outputResult = async (result: Result) => {
 };
 
 const result = await pipeline(octokit, config)(
+  addConfigToResult,
   addMetaToResult,
   addOrganizationInfoToResult,
   addRepositoriesToResult,
