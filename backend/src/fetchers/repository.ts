@@ -1,6 +1,6 @@
 // Fetchers for repository data and metrics
 
-import { Organization, Repository } from '@octokit/graphql-schema';
+import { User, Repository } from '@octokit/graphql-schema';
 import { Fetcher } from '..';
 import { RepositoryResult } from '../../../types';
 
@@ -10,11 +10,11 @@ export const addRepositoriesToResult: Fetcher = async (
   config,
 ) => {
   const organization = await octokit.graphql.paginate<{
-    organization: Organization;
+    user: User;
   }>(
     `
   query ($cursor: String, $organization: String!) {
-    organization(login:$organization) {
+      user(login:$organization) {
       repositories(privacy:PUBLIC, first:100, isFork:false, isArchived:false, after: $cursor)
       {
         pageInfo {
@@ -66,7 +66,7 @@ export const addRepositoriesToResult: Fetcher = async (
     },
   );
 
-  const filteredRepos = organization.organization.repositories.nodes!.filter(
+  const filteredRepos = organization.user.repositories.nodes!.filter(
     (repo) =>
       !(repo?.isArchived && !config.includeArchived) ||
       !(repo.isFork && !config.includeForks),
