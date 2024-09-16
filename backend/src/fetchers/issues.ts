@@ -93,13 +93,14 @@ export const addIssueAndPrData: Fetcher = async (result, octokit, config) => {
 };
 
 const calculateIssueMetricsPerRepo = async (
+  org: string,
   repoName: string,
   state: 'open' | 'closed',
   octokit: CustomOctokit,
   config: Config,
 ) => {
   const result = await octokit.paginate(octokit.issues.listForRepo, {
-    owner: config.organization,
+    owner: org,
     repo: repoName,
     state: state,
     // Need to limit this query somehow, otherwise it will take forever/timeout
@@ -132,6 +133,7 @@ const calculateIssueMetricsPerRepo = async (
 };
 
 const calculateIssueResponseTime = async (
+  org: string,
   repoName: string,
   octokit: CustomOctokit,
   config: Config,
@@ -170,7 +172,7 @@ const calculateIssueResponseTime = async (
     }
   `,
     {
-      organization: config.organization,
+      organization: org,
       repoName: repoName,
       since: config.since,
     },
@@ -245,18 +247,20 @@ const calculateIssueResponseTime = async (
 
 export const addIssueMetricsData: Fetcher = async (result, octokit, config) => {
   for (const repoName of Object.keys(result.repositories)) {
+    const repoNameWithOwner = result.repositories[repoName].repoNameWithOwner;
+    const org = repoNameWithOwner.split(`/${repoName}`)[0];
     const {
       issuesAverageAge: openIssuesAverageAge,
       issuesMedianAge: openIssuesMedianAge,
-    } = await calculateIssueMetricsPerRepo(repoName, 'open', octokit, config);
+    } = await calculateIssueMetricsPerRepo(org, repoName, 'open', octokit, config);
 
     const {
       issuesAverageAge: closedIssuesAverageAge,
       issuesMedianAge: closedIssuesMedianAge,
-    } = await calculateIssueMetricsPerRepo(repoName, 'closed', octokit, config);
+    } = await calculateIssueMetricsPerRepo(org, repoName, 'closed', octokit, config);
 
     const { issuesResponseAverageAge, issuesResponseMedianAge } =
-      await calculateIssueResponseTime(repoName, octokit, config);
+      await calculateIssueResponseTime(org, repoName, octokit, config);
 
     const repo = result.repositories[repoName];
     repo.openIssuesAverageAge = openIssuesAverageAge;
