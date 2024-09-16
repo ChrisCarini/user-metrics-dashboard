@@ -18,11 +18,15 @@ Check out the live demo [here](https://github-community-projects.github.io/org-m
 
 You will need to [fork this repository](https://github.com/github-community-projects/org-metrics-dashboard/fork) into your org. Alternatively, you can clone this repository and push it to your org.
 
+### GitHub Pages
+
+Since this repo leverages GitHub Pages (by default) to host the dashboard, you will need to enable GitHub Pages for the repository. You can do this by going to `Settings -> Pages` and under `Build and deployment` selecting `Source` to be `GitHub Actions`.
+
 ### Actions
 
 Since we use the GitHub API and actions to generate the data, you will need to enable actions for the repository. You can do this by going to the `Actions` tab in the repository and enabling actions.
 
-You will need to set a secret in the repository settings. The secret is a GitHub token that has admin read access to the organization. You can create a token by going to `Settings` -> `Developer settings` -> `Personal access tokens` and creating a new token with the following scopes.
+You will need to set a secret in the repository settings. The secret is a GitHub token that has admin read access to the organization. You can create a token by going to `Settings -> Developer settings -> Personal access tokens` and creating a new token with the following scopes.
 
 - public_repo
 - read:org
