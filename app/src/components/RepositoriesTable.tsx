@@ -52,6 +52,7 @@ type Filter = {
   topics?: Record<string, boolean>;
   collaboratorsCount?: Array<number | undefined>;
   watchersCount?: Array<number | undefined>;
+  starsCount?: Array<number | undefined>;
   openIssuesCount?: Array<number | undefined>;
   openPullRequestsCount?: Array<number | undefined>;
   closedIssuesCount?: Array<number | undefined>;
@@ -395,6 +396,7 @@ const getComparator = (sortColumn: keyof RepositoryResult): Comparator => {
     case 'openPullRequestsCount':
     case 'projectsCount':
     case 'watchersCount':
+    case 'starsCount':
     case 'openIssuesMedianAge':
     case 'openIssuesAverageAge':
     case 'closedIssuesMedianAge':
@@ -543,6 +545,21 @@ const RepositoriesTable = () => {
             filters={globalFilters}
             updateFilters={setGlobalFilters}
             filterName="watchersCount"
+          />
+        );
+      },
+    },
+    Stars: {
+      key: 'starsCount',
+      name: 'Stars',
+
+      renderHeaderCell: (p) => {
+        return (
+          <MinMaxRenderer
+            headerCellProps={p}
+            filters={globalFilters}
+            updateFilters={setGlobalFilters}
+            filterName="starsCount"
           />
         );
       },
@@ -815,6 +832,10 @@ const RepositoriesTable = () => {
           (globalFilters.watchersCount
             ? (globalFilters.watchersCount?.[0] ?? 0) <= repo.watchersCount &&
               repo.watchersCount <= (globalFilters.watchersCount[1] ?? Infinity)
+            : true) &&
+          (globalFilters.starsCount
+            ? (globalFilters.starsCount?.[0] ?? 0) <= repo.starsCount &&
+              repo.starsCount <= (globalFilters.starsCount[1] ?? Infinity)
             : true) &&
           (globalFilters.openIssuesCount
             ? (globalFilters.openIssuesCount?.[0] ?? 0) <=
