@@ -14,7 +14,7 @@ export const addOrganizationInfoToResult: Fetcher = async (
     orgInfo: {
       login: user.data.login,
       name: user.data.name ?? user.data.login,
-      description: user.data?.description ?? "No Description for Users",
+      description: user.data.bio,
       createdAt: user.data.created_at,
       repositoriesCount: user.data.public_repos,
     },
