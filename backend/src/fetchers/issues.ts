@@ -12,7 +12,7 @@ import { CustomOctokit } from '../lib/octokit';
 
 const getIssueAndPrData = async (octokit: CustomOctokit, config: Config) => {
   const issueData = await octokit.graphql.paginate<{
-    organization: {
+    user: {
       repositories: {
         totalCount: RepositoryConnection['totalCount'];
         pageInfo: PageInfo;
@@ -31,7 +31,7 @@ const getIssueAndPrData = async (octokit: CustomOctokit, config: Config) => {
   }>(
     `
   query($cursor: String, $organization: String!) {
-    organization(login:$organization){
+    user(login:$organization){
       repositories(privacy:PUBLIC, first:100, isFork:false, isArchived:false, after: $cursor) {
         totalCount
         pageInfo {
@@ -76,7 +76,7 @@ const getIssueAndPrData = async (octokit: CustomOctokit, config: Config) => {
 
 export const addIssueAndPrData: Fetcher = async (result, octokit, config) => {
   const dataResult = await getIssueAndPrData(octokit, config);
-  dataResult.organization.repositories.nodes.forEach((repo) => {
+  dataResult.user.repositories.nodes.forEach((repo) => {
     result.repositories[repo.name] = {
       ...result.repositories[repo.name],
       totalIssuesCount: repo.totalIssues.totalCount,
