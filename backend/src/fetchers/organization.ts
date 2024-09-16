@@ -7,16 +7,16 @@ export const addOrganizationInfoToResult: Fetcher = async (
   octokit,
   config,
 ) => {
-  const organization = await octokit.orgs.get({ org: config.organization });
+  const user = await octokit.users.getByUsername({ username: config.organization });
 
   return {
     ...result,
     orgInfo: {
-      login: organization.data.login,
-      name: organization.data.name ?? organization.data.login,
-      description: organization.data.description,
-      createdAt: organization.data.created_at,
-      repositoriesCount: organization.data.public_repos,
+      login: user.data.login,
+      name: user.data.name ?? user.data.login,
+      description: user.data?.description ?? "No Description for Users",
+      createdAt: user.data.created_at,
+      repositoriesCount: user.data.public_repos,
     },
   };
 };
