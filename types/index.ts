@@ -1,5 +1,6 @@
 export interface RepositoryResult {
   // Repo metadata
+  owner: string;
   repositoryName: string;
   repoNameWithOwner: string;
   licenseName: string;

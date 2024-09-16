@@ -22,6 +22,9 @@ export const addRepositoriesToResult: Fetcher = async (
           endCursor
         }
         nodes {
+          owner {
+            login
+          }
           name
           nameWithOwner
           forkCount
@@ -79,6 +82,7 @@ export const addRepositoriesToResult: Fetcher = async (
         return {
           ...acc,
           [repo.name]: {
+            owner: repo.owner.login,
             repositoryName: repo.name,
             repoNameWithOwner: repo.nameWithOwner,
             licenseName: repo.licenseInfo?.name || 'No License',

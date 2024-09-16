@@ -483,7 +483,9 @@ const RepositoriesTable = () => {
           rel="noreferrer"
           className="underline"
         >
-          {props.row.repositoryName}
+          {props.row.owner === Data['config'].organization
+            ? props.row.repositoryName
+            : props.row.repoNameWithOwner}
         </a>
       ),
     },
