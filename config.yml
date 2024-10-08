@@ -1,6 +1,6 @@
 ---
 # Organization to pull metrics from
-organization: 'linkedin'
+organization: 'ChrisCarini'
 
 # Start date to pull metrics from
 since: '2010-01-01'
