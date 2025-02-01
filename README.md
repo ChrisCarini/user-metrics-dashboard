@@ -1,22 +1,25 @@
-# Org Metrics Dashboard
+# User Metrics Dashboard
 
-An actions-powered dashboard to get an overview of your organization's open source repository health.
+An actions-powered dashboard to get an overview of your users's open source repository health.
 
-[![Image preview](./assets/preview.png)](https://github-community-projects.github.io/org-metrics-dashboard)
+> [!NOTE]  
+> This repository is a fork of https://github.com/github-community-projects/org-metrics-dashboard which has been modified to look up information about repositories under a GitHub User.
 
-The dashboard provides a quick overview of your organization's public repositories. It fetches data from the GitHub API using actions and displays it in a github pages site. The dashboard provides the following information about your repositories:
+[![Image preview](./assets/preview.png)](https://chriscarini.github.io/user-metrics-dashboard/)
+
+The dashboard provides a quick overview of your user's public repositories. It fetches data from the GitHub API using actions and displays it in a github pages site. The dashboard provides the following information about your repositories:
 
 - License information
 - Issue and PR counts
 - Metrics around response times for issues and PRs
 
-Check out the live demo [here](https://github-community-projects.github.io/org-metrics-dashboard).
+Check out the live demo [here](https://chriscarini.github.io/user-metrics-dashboard/).
 
-## Setting up the project for your organization
+## Setting up the project for your user
 
 ### Fork the repository
 
-You will need to [fork this repository](https://github.com/github-community-projects/org-metrics-dashboard/fork) into your org. Alternatively, you can clone this repository and push it to your org.
+You will need to [fork this repository](https://github.com/ChrisCarini/user-metrics-dashboard/fork) into your user. Alternatively, you can clone this repository and push it to your user.
 
 ### GitHub Pages
 
@@ -26,14 +29,11 @@ Since this repo leverages GitHub Pages (by default) to host the dashboard, you w
 
 Since we use the GitHub API and actions to generate the data, you will need to enable actions for the repository. You can do this by going to the `Actions` tab in the repository and enabling actions.
 
-You will need to set a secret in the repository settings. The secret is a GitHub token that has admin read access to the organization. You can create a token by going to `Settings -> Developer settings -> Personal access tokens` and creating a new token with the following scopes.
+You will need to set a secret in the repository settings. The secret is a GitHub token that has admin read access to the user. You can create a token by going to `Settings -> Developer settings -> Personal access tokens` and creating a new token with the following scopes.
 
 - public_repo
 - read:org
 - read:project
-
-> [!NOTE]
-> To fetch collaborator counts, you need to provide a token that is an admin of the organization.
 
 The secret should be named `GRAPHQL_TOKEN`. You can set this for your repository in `Settings` -> `Secrets and variables` -> `Actions`.
 
@@ -43,16 +43,16 @@ There is a `config.yml` located in the root of the project that contains the con
 
 ```yaml
 ---
-# The GitHub organization name
-organization: 'github-community-projects'
+# The GitHub user name
+organization: 'ChrisCarini'
 # An ISO 8601 date string representing the date to start fetching data from
-since: '2024-02-22'
-# Path of the github pages site. i.e. github-community-projects.github.io/org-metrics-dashboard
+since: '2010-01-01'
+# Path of the github pages site. i.e. chriscarini.github.io/user-metrics-dashboard
 # This will typically be "/{REPOSITORY_NAME}" if you are hosting on GitHub pages
-basePath: '/org-metrics-dashboard'
+basePath: '/user-metrics-dashboard'
 ```
 
-- `organization`: The name of the organization you want to fetch data from.
+- `organization`: The name of the user you want to fetch data from.
 - `since`: The date to start fetching data from. This is useful if you want to fetch data from a specific date.
 - `basePath`: **Important**. This is the path where the site will be hosted. If you are hosting the site on GitHub pages, you will need to set this to the repository name for links and assets to work correctly.
 
@@ -83,9 +83,6 @@ The `GRAPHQL_TOKEN` token requires the following scopes:
 - public_repo
 - read:org
 - read:project
-
-> [!NOTE]
-> To fetch collaborator counts, you need to provide a token that is an admin of the organization.
 
 ### Installation
 
@@ -127,7 +124,7 @@ Check out the [CODEOWNERS](./CODEOWNERS) file to see who to contact for code cha
 
 ## Support
 
-If you need support using this project or have questions about it, please [open an issue in this repository](https://github.com/github-community-projects/org-metrics-dashboard/issues/new) and we'd be happy to help. Requests made directly to GitHub staff or the support team will be redirected here to open an issue. GitHub SLA's and support/services contracts do not apply to this repository.
+If you need support using this project or have questions about it, please [open an issue in this repository](https://github.com/ChrisCarini/user-metrics-dashboard/issues/new) and we'd be happy to help. Requests made directly to GitHub staff or the support team will be redirected here to open an issue. GitHub SLA's and support/services contracts do not apply to this repository.
 
 ## More OSPO Tools
 
