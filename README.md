@@ -43,7 +43,7 @@ There is a `config.yml` located in the root of the project that contains the con
 
 ```yaml
 ---
-# The GitHub user name
+# The GitHub username
 organization: 'ChrisCarini'
 # An ISO 8601 date string representing the date to start fetching data from
 since: '2010-01-01'
