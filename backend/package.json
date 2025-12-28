@@ -44,9 +44,9 @@
     "lint-staged": "^15.2.10",
     "rimraf": "^5.0.5",
     "typescript": "^5.7.2",
-    "unbuild": "^2.0.0",
-    "vite": "^5.4.14",
-    "vitest": "^1.6.1"
+    "unbuild": "^3.6.1",
+    "vite": "^7.3.0",
+    "vitest": "^4.0.16"
   },
   "dependencies": {
     "@octokit/graphql-schema": "^14.50.0",
