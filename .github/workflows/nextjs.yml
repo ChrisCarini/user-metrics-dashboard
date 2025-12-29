@@ -32,12 +32,12 @@ jobs:
         with:
           node-version-file: .node-version
           cache: npm
-      - name: Collect metrics and save output
-        id: metrics
-        run: |
-          cd backend
-          npm i
-          npm run dev
+#      - name: Collect metrics and save output
+#        id: metrics
+#        run: |
+#          cd backend
+#          npm i
+#          npm run dev
       - name: Detect package manager
         id: detect-package-manager
         run: |
