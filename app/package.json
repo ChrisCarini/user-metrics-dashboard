@@ -51,5 +51,8 @@
     "eslint-plugin-react": "^7.37.2",
     "glob": "^10.3.10",
     "prettier": "^3.4.2"
+  },
+  "volta": {
+    "node": "24.5.0"
   }
 }
