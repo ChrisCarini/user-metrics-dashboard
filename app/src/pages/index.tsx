@@ -1,5 +1,10 @@
 import { Layout } from '@/components/Layout';
-import RepositoriesTable from '@/components/RepositoriesTable';
+import dynamic from 'next/dynamic';
+
+const RepositoriesTable = dynamic(
+  () => import('@/components/RepositoriesTable'),
+  { ssr: false }
+);
 
 export default function HomePage() {
   return (
