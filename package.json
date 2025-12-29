@@ -18,5 +18,8 @@
     "concurrently": "^8.2.2",
     "prettier": "^3.4.2",
     "yaml": "^2.6.1"
+  },
+  "volta": {
+    "node": "24.5.0"
   }
 }
