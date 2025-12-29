@@ -14,10 +14,10 @@
     "./backend"
   ],
   "devDependencies": {
-    "@dotenvx/dotenvx": "^1.51.1",
-    "concurrently": "^8.2.2",
-    "prettier": "^3.4.2",
-    "yaml": "^2.6.1"
+    "@dotenvx/dotenvx": "^1.51.2",
+    "concurrently": "^9.2.1",
+    "prettier": "^3.7.4",
+    "yaml": "^2.8.2"
   },
   "volta": {
     "node": "24.5.0"

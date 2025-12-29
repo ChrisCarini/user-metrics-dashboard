@@ -1,4 +1,4 @@
-import { paginateGraphql } from '@octokit/plugin-paginate-graphql';
+import { paginateGraphQL } from '@octokit/plugin-paginate-graphql';
 import { retry } from '@octokit/plugin-retry';
 import { throttling } from '@octokit/plugin-throttling';
 import { Octokit } from '@octokit/rest';
@@ -10,7 +10,7 @@ import { Octokit } from '@octokit/rest';
  */
 export const personalOctokit = (token: string) => {
   // Not sure if plugin order matters
-  const ModifiedOctokit = Octokit.plugin(paginateGraphql, retry, throttling);
+  const ModifiedOctokit = Octokit.plugin(paginateGraphQL, retry, throttling);
   return new ModifiedOctokit({
     auth: token,
     throttle: {
