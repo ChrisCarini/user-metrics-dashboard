@@ -44,9 +44,9 @@ const baseConfig = {
     'github',
   ],
   extends: [
-    'plugin:github/internal',
-    'plugin:github/recommended',
-    'plugin:github/browser',
+    // 'plugin:github/internal',
+    // 'plugin:github/recommended',
+    // 'plugin:github/browser',
     'plugin:escompat/typescript',
     'plugin:import/typescript',
     'plugin:react/recommended',
