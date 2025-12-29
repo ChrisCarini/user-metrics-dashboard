@@ -1,5 +1,5 @@
 import { Box, Label } from '@primer/react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Popover } from 'react-tiny-popover';
 
 const TopicCell = ({
@@ -19,7 +19,7 @@ const TopicCell = ({
         return (
           <Box
             className="shadow-xl min-w-64 p-4 rounded space-x-2"
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e: React.MouseEvent) => e.stopPropagation()}
             sx={{
               backgroundColor: 'Background',
               border: '1px solid',
