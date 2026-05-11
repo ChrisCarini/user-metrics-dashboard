@@ -15,7 +15,7 @@ on:
 permissions:
   # contents:
   # - read needed for the "publish to GHP" part
-  # - write needed for writting the `all_data.json` file back to the repo.
+  # - write needed for writing the `all_data.json` file back to the repo.
   contents: write
   pages: write
   id-token: write
