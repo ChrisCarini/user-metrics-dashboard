@@ -46,7 +46,7 @@
     "typescript": "^5.7.2",
     "unbuild": "^3.6.1",
     "vite": "^7.3.2",
-    "vitest": "^4.0.16"
+    "vitest": "^4.1.0"
   },
   "dependencies": {
     "@octokit/graphql-schema": "^14.50.0",
