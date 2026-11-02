@@ -50,7 +50,7 @@
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-primer-react": "^9.1.0",
     "eslint-plugin-react": "^7.37.2",
-    "glob": "^10.5.0",
+    "glob": "^14.0.3",
     "prettier": "^3.4.2"
   },
   "volta": {
